@@ -1,14 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
-    public Transform player;
-    public Vector3 offset;
-  
-    void Update () 
+    public Transform target;
+    private const float OffsetSmoothing = 3;
+    private readonly Vector3 _offset = new Vector3(0,0,-10);
+
+
+    private void FixedUpdate()
     {
-        transform.position = new Vector3 (player.position.x + offset.x, player.position.y + offset.y,offset.z);
+        Follow();
+    }
+
+    private void Follow()
+    {
+        var targetPosition = target.position + _offset;
+        var smoothedPosition = Vector3.Lerp(transform.position,targetPosition,OffsetSmoothing*Time.deltaTime);
+        transform.position = smoothedPosition;
     }
 }
