@@ -1,14 +1,13 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CameraControl : MonoBehaviour
 {
     public Transform target;
-    private const float OffsetSmoothing = 5;
-    private readonly Vector3 _offset = new Vector3(0,0,-10);
-    public Vector3 maxValue;
-    public Vector3 minValue;
-
-
+    [SerializeField] private float offsetSmoothing;
+    [SerializeField] private Vector3 offset;
+    [SerializeField] private Vector3 maxValue;
+    [SerializeField] private Vector3 minValue;
     private void FixedUpdate()
     {
         Follow();
@@ -16,9 +15,10 @@ public class CameraControl : MonoBehaviour
 
     private void Follow()
     {
-        var targetPosition = target.position + _offset;
-        var bound = new Vector3(Mathf.Clamp(targetPosition.x,minValue.x,maxValue.x),Mathf.Clamp(targetPosition.y,minValue.y,maxValue.y),Mathf.Clamp(targetPosition.z,minValue.z,maxValue.z));
-        var smoothedPosition = Vector3.Lerp(transform.position,bound,OffsetSmoothing*Time.deltaTime);
-        transform.position = smoothedPosition;
+        var targetPosition = target.position + offset;
+        var clampedX = Mathf.Clamp(targetPosition.x, minValue.x, maxValue.x);
+        var clampedY =  Mathf.Clamp(targetPosition.y,minValue.y,maxValue.y);
+        var bound = new Vector3(clampedX, clampedY, -10);
+        transform.position =  Vector3.Lerp(transform.position,bound,offsetSmoothing*Time.deltaTime);
     }
 }

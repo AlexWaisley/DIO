@@ -2,39 +2,36 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField]private float speed = 10;
-    private Rigidbody2D body;
-    private bool grounded = true;
-    private void Awake()
-    {
-        body = GetComponent<Rigidbody2D>();
-    }
+    [SerializeField] private float speed = 10;
+    [SerializeField] private Rigidbody2D body;
+    [SerializeField] private GroundChecker groundDetector;
 
     private void Update()
     {
+        Debug.Log(groundDetector.OnGround);
         var x = Input.GetAxis("Horizontal");
-        body.velocity = new Vector2(x*speed,body.velocity.y);
-        if ((Input.GetKey(KeyCode.W)||Input.GetKey(KeyCode.UpArrow))&&grounded)
+        Move(x);
+        var jumpRq = (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space));
+        if (jumpRq && groundDetector.OnGround)
         {
             Jump();
         }
+        
     }
 
-    
+    private void Move(float xMove)
+    {
+        body.velocity = new Vector2(xMove * speed, body.velocity.y);
+    }
+
     private void Jump()
     {
-        body.velocity = new Vector2(body.velocity.x,speed);
-        grounded = false;
+        body.velocity += new Vector2(0, speed);
+        groundDetector.OnGround = false;
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("ground"))
-        {
-            grounded = true;
-        }
-    }
+    
 }
