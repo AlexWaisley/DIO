@@ -3,7 +3,7 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
     public Transform target;
-    private const float OffsetSmoothing = 3;
+    private const float OffsetSmoothing = 5;
     private readonly Vector3 _offset = new Vector3(0,0,-10);
     public Vector3 maxValue;
     public Vector3 minValue;

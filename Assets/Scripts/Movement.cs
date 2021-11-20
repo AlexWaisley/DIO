@@ -23,6 +23,7 @@ public class Movement : MonoBehaviour
         }
     }
 
+    
     private void Jump()
     {
         body.velocity = new Vector2(body.velocity.x,speed);
