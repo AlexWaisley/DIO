@@ -9,7 +9,7 @@ public class ItemPicker : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     { 
-        Debug.Log(other);
+        
         if(!other.gameObject.CompareTag("Item")) return;
 
         var item = other.gameObject.GetComponent<ItemObject>();
