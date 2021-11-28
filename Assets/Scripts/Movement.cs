@@ -10,17 +10,25 @@ public class Movement : MonoBehaviour
     [SerializeField] private Rigidbody2D body;
     [SerializeField] private GroundChecker groundDetector;
     private float jTime = 0;
+    public bool freeze;
     private void Update()
     {
-        var x = Input.GetAxis("Horizontal");
-        Move(x);
-        var jumpRq = (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space));
-        if (jumpRq && groundDetector.OnGround)
+        if (!freeze)
         {
-            Jump();
+            var x = Input.GetAxis("Horizontal");
+            Move(x);
+            var jumpRq = (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space));
+            if (jumpRq && groundDetector.OnGround)
+            {
+                Jump();
+            }
         }
-        
+        else
+        {
+            Move(0);
+        }
     }
+    
 
     private void Move(float xMove)
     {
