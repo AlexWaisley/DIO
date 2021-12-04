@@ -13,6 +13,8 @@ public class Movement : MonoBehaviour
     public bool freeze;
     private void Update()
     {
+   
+
         if (!freeze)
         {
             var x = Input.GetAxis("Horizontal");
@@ -21,6 +23,10 @@ public class Movement : MonoBehaviour
             if (jumpRq && groundDetector.OnGround)
             {
                 Jump();
+            }
+            if (groundDetector.MoveBlockOn != null)
+            {
+                transform.position -= groundDetector.MoveBlockOn.deltaFrame;
             }
         }
         else
@@ -42,5 +48,5 @@ public class Movement : MonoBehaviour
         jTime = Time.time;
 
     }
-    
+
 }
