@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class Movement : MonoBehaviour
@@ -9,11 +10,15 @@ public class Movement : MonoBehaviour
     [SerializeField] private float speed = 10;
     [SerializeField] private Rigidbody2D body;
     [SerializeField] private GroundChecker groundDetector;
-    private float jTime = 0;
+    private float _jTime = 0;
     public bool freeze;
     private void Update()
     {
-   
+        if (transform.position.y < -27)
+        {
+            var scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+        }
 
         if (!freeze)
         {
@@ -43,9 +48,9 @@ public class Movement : MonoBehaviour
 
     private void Jump()
     {
-        if (jTime + 0.1 > Time.time) return; 
+        if (_jTime + 0.1 > Time.time) return; 
         body.velocity += new Vector2(0, speed);
-        jTime = Time.time;
+        _jTime = Time.time;
 
     }
 
