@@ -16,6 +16,7 @@ public class UiControl : MonoBehaviour
     [SerializeField] private GameObject lvel;
     [SerializeField] private GameObject alert;
     [SerializeField] private GameObject about;
+    [SerializeField] private GameObject confirm;
     [SerializeField] private Movement movement;
     private float a = 0;
     
@@ -66,8 +67,17 @@ public class UiControl : MonoBehaviour
         about.SetActive(false);
         Menu.SetActive(true);
     }
-
-    public void dropAll()
+    public void ConfirmExit()
+    {
+        Menu.SetActive(false);
+        confirm.SetActive(true);
+    }
+    public void ConfirmExitNo()
+    {
+        confirm.SetActive(false);
+        Menu.SetActive(true);
+    }
+    public void DropAll()
     {
         Application.Quit();
     }
