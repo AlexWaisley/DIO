@@ -435,18 +435,18 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 261059570}
+  m_TargetGraphic: {fileID: 1057970737}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1125694672}
-        m_TargetAssemblyTypeName: UiControl, Assembly-CSharp
-        m_MethodName: StartLvl2
-        m_Mode: 1
+      - m_Target: {fileID: 1125694673}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -653,14 +653,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1125694672}
-        m_TargetAssemblyTypeName: UiControl, Assembly-CSharp
-        m_MethodName: StartLvl1
-        m_Mode: 1
+      - m_Target: {fileID: 1125694673}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -983,7 +983,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1125694672}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UiControl, Assembly-CSharp
         m_MethodName: DropAll
         m_Mode: 1
@@ -1349,7 +1349,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1125694672}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UiControl, Assembly-CSharp
         m_MethodName: levelsOut
         m_Mode: 1
@@ -1599,7 +1599,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1125694672}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UiControl, Assembly-CSharp
         m_MethodName: aboutOut
         m_Mode: 1
@@ -1732,7 +1732,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1125694672}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UiControl, Assembly-CSharp
         m_MethodName: settingsOut
         m_Mode: 1
@@ -1865,7 +1865,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1125694672}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UiControl, Assembly-CSharp
         m_MethodName: ConfirmExit
         m_Mode: 1
@@ -2198,9 +2198,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1125694672}
-        m_TargetAssemblyTypeName: UiControl, Assembly-CSharp
-        m_MethodName: levels
+      - m_Target: {fileID: 1125694673}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: OpenLevels
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2260,7 +2260,7 @@ GameObject:
   - component: {fileID: 1125694670}
   - component: {fileID: 1125694669}
   - component: {fileID: 1125694668}
-  - component: {fileID: 1125694672}
+  - component: {fileID: 1125694673}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -2356,7 +2356,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1125694672
+--- !u!114 &1125694673
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2365,17 +2365,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1125694667}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d12825b10a663c4e96377f6d5b989ac, type: 3}
+  m_Script: {fileID: 11500000, guid: dd8b7aaf5104bfb41b11928cf2266ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exitLog: {fileID: 0}
-  settt: {fileID: 1144904295}
-  Menu: {fileID: 1645274675}
-  lvel: {fileID: 1163893621}
-  alert: {fileID: 1276216111}
-  about: {fileID: 514287996}
-  confirm: {fileID: 1485024002}
-  movement: {fileID: 0}
+  movementPanel: {fileID: 1144904295}
+  mainPanel: {fileID: 1645274675}
+  levelPanel: {fileID: 1163893621}
+  attentionPanel: {fileID: 1276216111}
+  aboutPanel: {fileID: 514287996}
+  confirmExitPanel: {fileID: 1485024002}
 --- !u!1 &1144904295
 GameObject:
   m_ObjectHideFlags: 0
@@ -3395,7 +3393,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1125694672}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UiControl, Assembly-CSharp
         m_MethodName: settings
         m_Mode: 1
@@ -3567,7 +3565,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1125694672}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UiControl, Assembly-CSharp
         m_MethodName: ConfirmExitNo
         m_Mode: 1
@@ -4231,7 +4229,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1125694672}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UiControl, Assembly-CSharp
         m_MethodName: abouTT
         m_Mode: 1

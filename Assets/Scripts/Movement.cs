@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour
         {
             var x = Input.GetAxis("Horizontal");
             Move(x);
-            var jumpRq = (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space));
+            var jumpRq = (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space));
             if (jumpRq && groundDetector.OnGround)
             {
                 Jump();
@@ -48,7 +48,7 @@ public class Movement : MonoBehaviour
 
     private void Jump()
     {
-        if (_jTime + 0.1 > Time.time) return; 
+        if (_jTime + 0.01 > Time.time) return; 
         body.velocity += new Vector2(0, speed);
         _jTime = Time.time;
 
