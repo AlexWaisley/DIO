@@ -22,73 +22,24 @@ public class MainMenu : MonoBehaviour
                 break;
             
         }
-      
     }
-
-    public void OpenSettings()
-    {
-        movementPanel.SetActive(true);
-        mainPanel.SetActive(false);
-    }
-    public void OpenLevels()
-    {
-        levelPanel.SetActive(true);
-        mainPanel.SetActive(false);
-    }
-    public void levelsOut()
-    {
-        levelPanel.SetActive(false);
-        mainPanel.SetActive(true);
-    }
-    public void settingsOut()
+   
+    
+    public void OpenMenu(GameObject panel)
     {
         movementPanel.SetActive(false);
-        mainPanel.SetActive(true);
-    }
-    public void abouTT()
-    {
-        aboutPanel.SetActive(true);
         mainPanel.SetActive(false);
-    }
-
-    public void aboutOut()
-    {
+        levelPanel.SetActive(false);
+        attentionPanel.SetActive(false);
         aboutPanel.SetActive(false);
-        mainPanel.SetActive(true);
-    }
-    public void ConfirmExit()
-    {
-        mainPanel.SetActive(false);
-        confirmExitPanel.SetActive(true);
-    }
-    public void ConfirmExitNo()
-    {
         confirmExitPanel.SetActive(false);
-        mainPanel.SetActive(true);
+        panel.SetActive(true);
     }
-    public void DropAll()
+    
+    public void Exit()
     {
         Application.Quit();
     }
-    public void StartLvl1()
-    {
-        SceneManager.LoadScene("Lvl_1");
-    }
-    public void StartLvl2()
-    {
-        if (false)
-        {
-            SceneManager.LoadScene("Lvl_2");
-        }
-        else
-        {
-            attentionPanel.SetActive(true);
-            
-        }
-        
-    }
-    IEnumerator awwait(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-    }
+    
+
 }
