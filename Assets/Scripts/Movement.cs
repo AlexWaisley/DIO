@@ -10,7 +10,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float speed = 10;
     [SerializeField] private Rigidbody2D body;
     [SerializeField] private GroundChecker groundDetector;
-    private float _jTime = 0;
+    private float m_JTime = 0;
     public bool freeze;
     private void Update()
     {
@@ -48,9 +48,9 @@ public class Movement : MonoBehaviour
 
     private void Jump()
     {
-        if (_jTime + 0.01 > Time.time) return; 
+        if (m_JTime + 0.01 > Time.time) return; 
         body.velocity += new Vector2(0, speed);
-        _jTime = Time.time;
+        m_JTime = Time.time;
 
     }
 

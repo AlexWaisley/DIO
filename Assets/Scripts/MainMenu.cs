@@ -11,8 +11,13 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject attentionPanel;
     [SerializeField] private GameObject aboutPanel;
     [SerializeField] private GameObject confirmExitPanel;
-    
-    
+
+    private IEnumerator AttentionShow()
+    {
+        attentionPanel.SetActive(true);
+        yield return new WaitForSeconds(5);
+        attentionPanel.SetActive(false);
+    }
     public void LoadLevel(int level)
     {
         switch (level)
@@ -20,11 +25,28 @@ public class MainMenu : MonoBehaviour
             case 1:
                 SceneManager.LoadScene("Lvl_1");
                 break;
+            case 2:
+                if (PlayerPrefs.GetInt($"FragsLvl_1") < 2)
+                {
+                    StartCoroutine(AttentionShow());
+                    break;
+                }
+                SceneManager.LoadScene("Lvl_2");
+                break;
             
         }
     }
-   
-    
+
+    public int FragsCount()
+    {
+        var s = 0;
+        s+=PlayerPrefs.GetInt($"FragsLvl_1");
+        s+=PlayerPrefs.GetInt($"FragsLvl_2");
+        s+=PlayerPrefs.GetInt($"FragsLvl_3");
+        s+=PlayerPrefs.GetInt($"FragsLvl_4");
+        s+=PlayerPrefs.GetInt($"FragsLvl_5");
+        return s;
+    }
     public void OpenMenu(GameObject panel)
     {
         movementPanel.SetActive(false);
