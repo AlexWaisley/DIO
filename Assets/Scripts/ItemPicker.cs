@@ -12,9 +12,8 @@ public class ItemPicker : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     { 
-        
-        if(!other.gameObject.CompareTag("Item")) return;
 
+        if(!other.gameObject.CompareTag("Item")) return;
         var item = other.gameObject.GetComponent<ItemObject>();
         items.Add(item.id);
         itemCounter.text = items.Count.ToString();

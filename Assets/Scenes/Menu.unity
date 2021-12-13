@@ -435,7 +435,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1057970737}
+  m_TargetGraphic: {fileID: 261059570}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -2294,6 +2294,15 @@ MonoBehaviour:
   attentionPanel: {fileID: 1276216111}
   aboutPanel: {fileID: 514287996}
   confirmExitPanel: {fileID: 1485024002}
+  levelButtons:
+  - {fileID: 331132434}
+  - {fileID: 261059570}
+  - {fileID: 1057970737}
+  - {fileID: 1327777638}
+  - {fileID: 1203892208}
+  c1: {r: 0.254717, g: 0.254717, b: 0.254717, a: 1}
+  c2: {r: 0.61870015, g: 0.6509434, b: 0.22967248, a: 1}
+  c3: {r: 0.39170423, g: 0.7264151, b: 0.28371304, a: 1}
 --- !u!1 &1144904295
 GameObject:
   m_ObjectHideFlags: 0
@@ -2346,7 +2355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1163893622
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3378,7 +3387,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1645274676
 RectTransform:
   m_ObjectHideFlags: 0
