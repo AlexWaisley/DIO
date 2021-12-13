@@ -55,6 +55,7 @@ public class MainMenu : MonoBehaviour
         };
         for (var i = 0; i < 5; i++)
         {
+            Debug.Log(acLst[i]);
             if (acLst[i] < 2)
             {
                 levelButtons[i].color = c1;
@@ -63,7 +64,7 @@ public class MainMenu : MonoBehaviour
             {
                 levelButtons[i].color = c2;
             }
-            else if (acLst[i] == 5)
+            else if (acLst[i] >= 5)
             {
                 levelButtons[i].color = c3;
             }
