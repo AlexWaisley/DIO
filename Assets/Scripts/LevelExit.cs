@@ -10,6 +10,7 @@ public class LevelExit : MonoBehaviour
     [SerializeField] private UnityEvent onExit;
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log(onExit);
         onExit.Invoke();
         Debug.Log(other.gameObject.tag);
     }

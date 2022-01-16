@@ -37,64 +37,57 @@ public class MainMenu : MonoBehaviour
                     StartCoroutine(AttentionShow());
                     break;
                 }
-
                 SceneManager.LoadScene("Lvl_2");
+                break;
+            case 3:
+                if (PlayerPrefs.GetInt($"FragsLvl_2") < 2)
+                {
+                    StartCoroutine(AttentionShow());
+                    break;
+                }
+                SceneManager.LoadScene("Lvl_3");
                 break;
         }
     }
+    public void MomSbros()
+    {
+        PlayerPrefs.SetInt($"FragsLvl_1", 0);
+        PlayerPrefs.SetInt($"FragsLvl_2", 0);
+        PlayerPrefs.SetInt($"FragsLvl_3", 0);
+        PlayerPrefs.SetInt($"FragsLvl_4", 0);
+        PlayerPrefs.SetInt($"FragsLvl_5", 0);
+        Application.Quit();
 
+    }
     public void Start()
     {
         var acLst = new List<int>()
         {
-            PlayerPrefs.GetInt($"FragsLvl_1"),
-            PlayerPrefs.GetInt($"FragsLvl_2"),
-            PlayerPrefs.GetInt($"FragsLvl_3"),
-            PlayerPrefs.GetInt($"FragsLvl_4"),
-            PlayerPrefs.GetInt($"FragsLvl_5"),
-        };
+            PlayerPrefs.GetInt($"FragsLvl_1"), PlayerPrefs.GetInt($"FragsLvl_2"), 
+            PlayerPrefs.GetInt($"FragsLvl_3"), PlayerPrefs.GetInt($"FragsLvl_4"), 
+            PlayerPrefs.GetInt($"FragsLvl_5"), };
         for (var i = 0; i < 5; i++)
         {
             Debug.Log(acLst[i]);
-            if (acLst[i] < 2)
-            {
-                levelButtons[i].color = c1;
-            }
-            else if (acLst[i] < 5)
-            {
-                levelButtons[i].color = c2;
-            }
-            else if (acLst[i] >= 5)
-            {
-                levelButtons[i].color = c3;
-            }
+            if (acLst[i] < 2) { levelButtons[i].color = c1; }
+            else if (acLst[i] < 5) { levelButtons[i].color = c2; }
+            else if (acLst[i] >= 5) { levelButtons[i].color = c3; }
         }
     }
-
     public int FragsCount()
     {
-        var s = 0;
-        s += PlayerPrefs.GetInt($"FragsLvl_1");
-        s += PlayerPrefs.GetInt($"FragsLvl_2");
-        s += PlayerPrefs.GetInt($"FragsLvl_3");
-        s += PlayerPrefs.GetInt($"FragsLvl_4");
-        s += PlayerPrefs.GetInt($"FragsLvl_5");
+        var s = 0; s += PlayerPrefs.GetInt($"FragsLvl_1");
+        s += PlayerPrefs.GetInt($"FragsLvl_2"); s += PlayerPrefs.GetInt($"FragsLvl_3");
+        s += PlayerPrefs.GetInt($"FragsLvl_4"); s += PlayerPrefs.GetInt($"FragsLvl_5");
         return s;
     }
 
     public void OpenMenu(GameObject panel)
     {
-        movementPanel.SetActive(false);
-        mainPanel.SetActive(false);
-        levelPanel.SetActive(false);
-        attentionPanel.SetActive(false);
-        aboutPanel.SetActive(false);
-        confirmExitPanel.SetActive(false);
+        movementPanel.SetActive(false); mainPanel.SetActive(false);
+        levelPanel.SetActive(false); attentionPanel.SetActive(false);
+        aboutPanel.SetActive(false); confirmExitPanel.SetActive(false);
         panel.SetActive(true);
     }
-
-    public void Exit()
-    {
-        Application.Quit();
-    }
+    public void Exit() { Application.Quit(); }
 }
