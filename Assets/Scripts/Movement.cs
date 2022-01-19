@@ -22,30 +22,20 @@ public class Movement : MonoBehaviour
             var scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
         }
-
         if (!freeze)
         {
             var x = Input.GetAxis("Horizontal");
             Move(x);
             var jumpRq = (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) ||
                           Input.GetKeyDown(KeyCode.Space));
-            if (jumpRq && groundDetector.OnGround)
-            {
-                Jump();
-            }
-
+            if (jumpRq && groundDetector.OnGround) { Jump(); }
             if (groundDetector.MoveBlockOn != null)
             {
                 transform.position -= groundDetector.MoveBlockOn.deltaFrame;
             }
         }
-        else
-        {
-            Move(0);
-        }
+        else { Move(0); }
     }
-
-
     private void Move(float xMove)
     {
         body.velocity = new Vector2(xMove * speed, body.velocity.y);
@@ -55,13 +45,10 @@ public class Movement : MonoBehaviour
     private void Jump()
     {
         if (m_JTime + 0.01 > Time.time) return;
-       
         body.velocity += new Vector2(0, jump);
         m_JTime = Time.time;
     }
-
     private bool m_FacingLeft = true;
-
     private void LateUpdate()
     {
         var localScale = body.transform.localScale;

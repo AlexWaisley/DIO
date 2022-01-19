@@ -20,7 +20,6 @@ public class ItemPicker : MonoBehaviour
         PlayerPrefs.SetInt($"Frags{SceneManager.GetActiveScene().name}", items.Count);
         PlayerPrefs.Save();
         Destroy(other.gameObject);
-
     }
 
     private void Start()
