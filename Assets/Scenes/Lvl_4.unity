@@ -5630,6 +5630,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3979419896653080108, guid: 1118ac7156e7bcd4dad5e2b8d1f9ec87, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3979419896653080109, guid: 1118ac7156e7bcd4dad5e2b8d1f9ec87, type: 3}
       propertyPath: movement
       value: 

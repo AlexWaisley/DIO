@@ -47,6 +47,22 @@ public class MainMenu : MonoBehaviour
                 }
                 SceneManager.LoadScene("Lvl_3");
                 break;
+            case 4:
+                if (PlayerPrefs.GetInt($"FragsLvl_3") < 2)
+                {
+                    StartCoroutine(AttentionShow());
+                    break;
+                }
+                SceneManager.LoadScene("Lvl_4");
+                break;
+            case 5:
+                if (PlayerPrefs.GetInt($"FragsLvl_4") < 2)
+                {
+                    StartCoroutine(AttentionShow());
+                    break;
+                }
+                SceneManager.LoadScene("Lvl_5");
+                break;
         }
     }
     public void MomSbros()
