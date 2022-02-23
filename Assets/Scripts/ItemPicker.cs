@@ -15,6 +15,7 @@ public class ItemPicker : MonoBehaviour
     {
         if(!other.gameObject.CompareTag("Item")) return;
         var item = other.gameObject.GetComponent<ItemObject>();
+        Destroy(other.gameObject);
         items.Add(item.id);
         itemCounter.text = items.Count.ToString();
         itemCounterOut.text = items.Count.ToString()+"/6";

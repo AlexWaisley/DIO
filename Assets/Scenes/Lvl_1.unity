@@ -2023,11 +2023,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3447526322817136079, guid: 9ef6569ae592cc440bc6f341689e641f, type: 3}
       propertyPath: m_Size.x
-      value: 1.2786149
+      value: 10.266611
       objectReference: {fileID: 0}
     - target: {fileID: 3447526322817136079, guid: 9ef6569ae592cc440bc6f341689e641f, type: 3}
       propertyPath: m_Offset.x
-      value: -0.0035731196
+      value: -0.03895688
+      objectReference: {fileID: 0}
+    - target: {fileID: 3447526322817136079, guid: 9ef6569ae592cc440bc6f341689e641f, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.027729034
       objectReference: {fileID: 0}
     - target: {fileID: 4753941987052620533, guid: 9ef6569ae592cc440bc6f341689e641f, type: 3}
       propertyPath: m_Name
