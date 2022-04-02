@@ -19,6 +19,7 @@ public class ItemPicker : MonoBehaviour
         items.Add(item.id);
         itemCounter.text = items.Count.ToString();
         itemCounterOut.text = items.Count.ToString()+"/6";
+        Debug.Log(SceneManager.GetActiveScene());
         PlayerPrefs.SetInt($"Frags{SceneManager.GetActiveScene().name}", items.Count);
         PlayerPrefs.Save();
         Destroy(other.gameObject);

@@ -61,7 +61,16 @@ public class MainMenu : MonoBehaviour
                     StartCoroutine(AttentionShow());
                     break;
                 }
+
                 SceneManager.LoadScene("Lvl_5");
+                break;
+            case 6:
+                if (PlayerPrefs.GetInt($"FragsLvl_5") < 2)
+                {
+                    StartCoroutine(AttentionShow());
+                    break;
+                }
+                SceneManager.LoadScene("Lvl_6");
                 break;
         }
     }
@@ -72,6 +81,7 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetInt($"FragsLvl_3", 0);
         PlayerPrefs.SetInt($"FragsLvl_4", 0);
         PlayerPrefs.SetInt($"FragsLvl_5", 0);
+        PlayerPrefs.SetInt($"FragsLvl_6", 0);
         Application.Quit();
 
     }
@@ -81,7 +91,7 @@ public class MainMenu : MonoBehaviour
         {
             PlayerPrefs.GetInt($"FragsLvl_1"), PlayerPrefs.GetInt($"FragsLvl_2"), 
             PlayerPrefs.GetInt($"FragsLvl_3"), PlayerPrefs.GetInt($"FragsLvl_4"), 
-            PlayerPrefs.GetInt($"FragsLvl_5"), };
+            PlayerPrefs.GetInt($"FragsLvl_5"),  PlayerPrefs.GetInt($"FragsLvl_6"), };
         for (var i = 0; i < 5; i++)
         {
             Debug.Log(acLst[i]);
@@ -94,7 +104,9 @@ public class MainMenu : MonoBehaviour
     {
         var s = 0; s += PlayerPrefs.GetInt($"FragsLvl_1");
         s += PlayerPrefs.GetInt($"FragsLvl_2"); s += PlayerPrefs.GetInt($"FragsLvl_3");
-        s += PlayerPrefs.GetInt($"FragsLvl_4"); s += PlayerPrefs.GetInt($"FragsLvl_5");
+        s += PlayerPrefs.GetInt($"FragsLvl_4"); 
+        s += PlayerPrefs.GetInt($"FragsLvl_5");
+        s += PlayerPrefs.GetInt($"FragsLvl_6");
         return s;
     }
 
