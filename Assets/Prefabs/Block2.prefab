@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2508010633067764981}
   m_Layer: 0
   m_Name: GrassCliffRight
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 6798928440129838825}
   m_Layer: 0
   m_Name: Block2
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
