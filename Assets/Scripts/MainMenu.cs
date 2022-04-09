@@ -17,105 +17,37 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Color c2;
     [SerializeField] private Color c3;
 
-    private IEnumerator AttentionShow()
+    public void LoadLevel(int level) => SceneManager.LoadScene($"Lvl_{level}");
+    public void ResetData()
     {
-        attentionPanel.SetActive(true);
-        yield return new WaitForSeconds(5);
-        attentionPanel.SetActive(false);
+        MemoryManager.ResetData();
+        UpdateColors();
     }
 
-    public void LoadLevel(int level)
+    private void UpdateColors()
     {
-        switch (level)
+        var acLst = MemoryManager.GetValues();
+        for (var i = 1; i <= MemoryManager.LevelCount; i++)
         {
-            case 1:
-                SceneManager.LoadScene("Lvl_1");
-                break;
-            case 2:
-                if (PlayerPrefs.GetInt($"FragsLvl_1") < 2)
-                {
-                    StartCoroutine(AttentionShow());
-                    break;
-                }
-                SceneManager.LoadScene("Lvl_2");
-                break;
-            case 3:
-                if (PlayerPrefs.GetInt($"FragsLvl_2") < 2)
-                {
-                    StartCoroutine(AttentionShow());
-                    break;
-                }
-                SceneManager.LoadScene("Lvl_3");
-                break;
-            case 4:
-                if (PlayerPrefs.GetInt($"FragsLvl_3") < 2)
-                {
-                    StartCoroutine(AttentionShow());
-                    break;
-                }
-                SceneManager.LoadScene("Lvl_4");
-                break;
-            case 5:
-                if (PlayerPrefs.GetInt($"FragsLvl_4") < 2)
-                {
-                    StartCoroutine(AttentionShow());
-                    break;
-                }
-
-                SceneManager.LoadScene("Lvl_5");
-                break;
-            case 6:
-                if (PlayerPrefs.GetInt($"FragsLvl_5") < 2)
-                {
-                    StartCoroutine(AttentionShow());
-                    break;
-                }
-                SceneManager.LoadScene("Lvl_6");
-                break;
+            if (acLst[i] < 2)
+                levelButtons[i-1].color = c1;
+            else if (acLst[i] < 5)
+                levelButtons[i-1].color = c2;
+            else if (acLst[i] >= 5) levelButtons[i-1].color = c3;
         }
     }
-    public void MomSbros()
-    {
-        PlayerPrefs.SetInt($"FragsLvl_1", 0);
-        PlayerPrefs.SetInt($"FragsLvl_2", 0);
-        PlayerPrefs.SetInt($"FragsLvl_3", 0);
-        PlayerPrefs.SetInt($"FragsLvl_4", 0);
-        PlayerPrefs.SetInt($"FragsLvl_5", 0);
-        PlayerPrefs.SetInt($"FragsLvl_6", 0);
-        Application.Quit();
-
-    }
-    public void Start()
-    {
-        var acLst = new List<int>()
-        {
-            PlayerPrefs.GetInt($"FragsLvl_1"), PlayerPrefs.GetInt($"FragsLvl_2"), 
-            PlayerPrefs.GetInt($"FragsLvl_3"), PlayerPrefs.GetInt($"FragsLvl_4"), 
-            PlayerPrefs.GetInt($"FragsLvl_5"),  PlayerPrefs.GetInt($"FragsLvl_6"), };
-        for (var i = 0; i < 5; i++)
-        {
-            Debug.Log(acLst[i]);
-            if (acLst[i] < 2) { levelButtons[i].color = c1; }
-            else if (acLst[i] < 5) { levelButtons[i].color = c2; }
-            else if (acLst[i] >= 5) { levelButtons[i].color = c3; }
-        }
-    }
-    public int FragsCount()
-    {
-        var s = 0; s += PlayerPrefs.GetInt($"FragsLvl_1");
-        s += PlayerPrefs.GetInt($"FragsLvl_2"); s += PlayerPrefs.GetInt($"FragsLvl_3");
-        s += PlayerPrefs.GetInt($"FragsLvl_4"); 
-        s += PlayerPrefs.GetInt($"FragsLvl_5");
-        s += PlayerPrefs.GetInt($"FragsLvl_6");
-        return s;
-    }
+    
+    public void Start() => UpdateColors();
 
     public void OpenMenu(GameObject panel)
     {
-        movementPanel.SetActive(false); mainPanel.SetActive(false);
-        levelPanel.SetActive(false); attentionPanel.SetActive(false);
-        aboutPanel.SetActive(false); confirmExitPanel.SetActive(false);
+        movementPanel.SetActive(false);
+        mainPanel.SetActive(false);
+        levelPanel.SetActive(false);
+        attentionPanel.SetActive(false);
+        aboutPanel.SetActive(false);
+        confirmExitPanel.SetActive(false);
         panel.SetActive(true);
     }
-    public void Exit() { Application.Quit(); }
+    public void Exit() => Application.Quit();
 }
