@@ -13,6 +13,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject aboutPanel;
     [SerializeField] private GameObject confirmExitPanel;
     [SerializeField] private List<UnityEngine.UI.Image> levelButtons;
+    [SerializeField] private List<UnityEngine.UI.Text> fragCountOnLvl;
     [SerializeField] private Color c1;
     [SerializeField] private Color c2;
     [SerializeField] private Color c3;
@@ -29,6 +30,7 @@ public class MainMenu : MonoBehaviour
         var acLst = MemoryManager.GetValues();
         for (var i = 1; i <= MemoryManager.LevelCount; i++)
         {
+            fragCountOnLvl[i-1].text = $"{acLst[i]}/6";
             if (acLst[i] < 2)
                 levelButtons[i-1].color = c1;
             else if (acLst[i] < 5)
@@ -36,7 +38,7 @@ public class MainMenu : MonoBehaviour
             else if (acLst[i] >= 5) levelButtons[i-1].color = c3;
         }
     }
-    
+
     public void Start() => UpdateColors();
 
     public void OpenMenu(GameObject panel)
