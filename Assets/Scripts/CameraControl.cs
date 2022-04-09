@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -8,8 +9,23 @@ public class CameraControl : MonoBehaviour
     [SerializeField] private Vector3 offset;
     [SerializeField] private Vector3 maxValue;
     [SerializeField] private Vector3 minValue;
+    private float zoomFactor = 3f;
+    private float targetzoom;
+    private Camera cam;
+
+    private void Start()
+    {
+        cam = Camera.main;
+        targetzoom = cam.orthographicSize;
+    }
+
     private void FixedUpdate()
     {
+        float scrollData;
+        scrollData = Input.GetAxis("Mouse ScrollWheel");
+        targetzoom -= scrollData * zoomFactor;
+        targetzoom = Mathf.Clamp(targetzoom, 4.5f, 15f);
+        cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, targetzoom, Time.deltaTime);
         Follow();
     }
 
