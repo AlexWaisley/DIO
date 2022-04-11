@@ -1146,6 +1146,10 @@ PrefabInstance:
       propertyPath: maxValue.x
       value: 108.7
       objectReference: {fileID: 0}
+    - target: {fileID: 2331050878846028402, guid: 07762111c30eb404f8bdcd065078ee9a, type: 3}
+      propertyPath: minValue.y
+      value: -48
+      objectReference: {fileID: 0}
     - target: {fileID: 2331050878846028403, guid: 07762111c30eb404f8bdcd065078ee9a, type: 3}
       propertyPath: m_ClearFlags
       value: 1
