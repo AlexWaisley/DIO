@@ -7,18 +7,21 @@ using UnityEngine.InputSystem;
 public class PlayerControl : MonoBehaviour
 {
     [SerializeField] public GameObject playerPrefab;
-    [SerializeField] public Transform spawnPosition;
-    [SerializeField] public GameObject scene;
     [SerializeField] private float speed = 10;
     [SerializeField] private float jump = 13;
     private GroundChecker m_GroundDetector;
     public GameObject player;
     private Rigidbody2D m_Rb;
     private Animator m_Animator;
+    private bool m_Frozen;
 
     public bool IsFrozen
     {
-        set => m_Rb.constraints = value ? RigidbodyConstraints2D.FreezeAll : RigidbodyConstraints2D.FreezeRotation;
+        set
+        {
+            m_Frozen = value;
+            m_Rb.constraints = value ? RigidbodyConstraints2D.FreezeAll : RigidbodyConstraints2D.FreezeRotation;
+        }
     }
 
     private float m_MoveX;
@@ -31,7 +34,7 @@ public class PlayerControl : MonoBehaviour
     public void Move(InputAction.CallbackContext ctx)
     {
         m_MoveX = ctx.ReadValue<Vector2>().x * speed;
-
+        if (m_Frozen) m_MoveX = 0;
 
         m_Animator.Play(Mathf.Abs(m_MoveX) > 0.2 ? "Rogue_run_01" : "Rogue_idle_01");
         if (m_MoveX > 0.2)
@@ -49,8 +52,9 @@ public class PlayerControl : MonoBehaviour
 
     public void Spawn()
     {
+        var spawnPosition = GameObject.FindGameObjectWithTag("SpawnPosition").transform;
         player = Instantiate(playerPrefab, spawnPosition.position, Quaternion.identity);
-        player.transform.parent = scene.transform;
+        player.transform.parent = spawnPosition.parent;
         m_Rb = player.GetComponent<Rigidbody2D>();
         m_GroundDetector = player.GetComponentInChildren<GroundChecker>();
         m_Animator = player.GetComponentInChildren<Animator>();

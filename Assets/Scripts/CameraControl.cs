@@ -6,12 +6,11 @@ using UnityEngine.Serialization;
 
 public class CameraControl : MonoBehaviour
 {
-    [SerializeField] public GameObject target;
-
     [SerializeField] private float offsetSmoothing;
     [SerializeField] private Vector3 offset;
     [SerializeField] private Vector3 maxValue;
     [SerializeField] private Vector3 minValue;
+    public GameObject target;
     private const float ZoomFactor = 2f;
     private float m_TargetZoom;
     private Camera m_Cam;

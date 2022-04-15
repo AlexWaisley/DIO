@@ -12,10 +12,8 @@ public class Movement : MonoBehaviour
     [SerializeField] private Rigidbody2D body;
     [SerializeField] private GroundChecker groundDetector;
     [SerializeField] private Animator animator;
-    private float m_JTime = 0;
+    private float m_JTime;
     public bool freeze;
-
-
     private void Update()
     {
         if (transform.position.y < -27)
