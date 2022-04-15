@@ -9,6 +9,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] public GameObject playerPrefab;
     [SerializeField] private float speed = 10;
     [SerializeField] private float jump = 13;
+    [SerializeField] private AnimationCurve moveCur;
     private GroundChecker m_GroundDetector;
     public GameObject player;
     private Rigidbody2D m_Rb;
@@ -25,22 +26,35 @@ public class PlayerControl : MonoBehaviour
     }
 
     private float m_MoveX;
+    private const float AccelSpeed = 4f;
+    private float m_TimeX;
+    private float m_LastDirection;
 
     private void Update()
     {
-        m_Rb.velocity = new Vector2(m_MoveX, m_Rb.velocity.y);
+        if (m_MoveX != 0)
+        {
+            m_LastDirection = m_MoveX;
+            m_TimeX += Time.deltaTime * AccelSpeed;
+        }
+        else
+            m_TimeX -= Time.deltaTime * AccelSpeed;
+
+        m_TimeX = Mathf.Clamp(m_TimeX, 0, 1);
+        var moveX = moveCur.Evaluate(m_TimeX) * m_LastDirection;
+        m_Rb.velocity = new Vector2(moveX * speed, m_Rb.velocity.y);
+        
+        m_Animator.Play(Mathf.Abs(moveX) > 0.1 ? "Rogue_run_01" : "Rogue_idle_01");
+        if (moveX > 0.1)
+            m_Rb.transform.localScale = new Vector3(1, 1, 1);
+        else if (moveX < -0.1)
+            m_Rb.transform.localScale = new Vector3(-1, 1, 1);
     }
 
     public void Move(InputAction.CallbackContext ctx)
     {
-        m_MoveX = ctx.ReadValue<Vector2>().x * speed;
+        m_MoveX = ctx.ReadValue<Vector2>().x;
         if (m_Frozen) m_MoveX = 0;
-
-        m_Animator.Play(Mathf.Abs(m_MoveX) > 0.2 ? "Rogue_run_01" : "Rogue_idle_01");
-        if (m_MoveX > 0.2)
-            m_Rb.transform.localScale = new Vector3(1, 1, 1);
-        else if (m_MoveX < -0.2)
-            m_Rb.transform.localScale = new Vector3(-1, 1, 1);
     }
 
     public void Jump(InputAction.CallbackContext ctx)
