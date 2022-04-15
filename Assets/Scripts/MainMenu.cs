@@ -23,8 +23,7 @@ public class MainMenu : MonoBehaviour
 
     public void ShowInstr(int i)
     {
-        if (!virusInstr.activeSelf) 
-            virusInstr.SetActive(true);
+        virusInstr.SetActive(true);
         var acLst = MemoryManager.GetValues();
         foreach (var g in instHandlers) 
             g.Close();
