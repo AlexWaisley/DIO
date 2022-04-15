@@ -15,6 +15,7 @@ public class Movement : MonoBehaviour
     private float m_JTime = 0;
     public bool freeze;
 
+
     private void Update()
     {
         if (transform.position.y < -27)
