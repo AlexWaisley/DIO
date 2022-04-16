@@ -54,6 +54,7 @@ public class PlayerControl : MonoBehaviour
     public void Move(InputAction.CallbackContext ctx)
     {
         m_MoveX = ctx.ReadValue<Vector2>().x;
+        Debug.Log(m_MoveX);
         if (m_Frozen) m_MoveX = 0;
     }
 
