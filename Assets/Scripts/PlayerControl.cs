@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -15,7 +16,12 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody2D m_Rb;
     private Animator m_Animator;
     private bool m_Frozen;
-
+    
+    public void Zoom(InputAction.CallbackContext zoom)
+    {
+        if (Camera.main != null) 
+            Camera.main.GetComponent<CameraControl>().Zoom(zoom);
+    }
     public bool IsFrozen
     {
         set
@@ -31,7 +37,13 @@ public class PlayerControl : MonoBehaviour
     private float m_LastDirection;
 
     private void Update()
-    {
+    { 
+      
+        if (player.transform.position.y < -50)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        
         if (m_MoveX != 0)
         {
             m_LastDirection = m_MoveX;
@@ -49,6 +61,10 @@ public class PlayerControl : MonoBehaviour
             m_Rb.transform.localScale = new Vector3(1, 1, 1);
         else if (moveX < -0.1)
             m_Rb.transform.localScale = new Vector3(-1, 1, 1);
+        if (m_GroundDetector.MoveBlockOn != null)
+        {
+            m_Rb.transform.position -= m_GroundDetector.MoveBlockOn.deltaFrame;
+        }
     }
 
     public void Move(InputAction.CallbackContext ctx)

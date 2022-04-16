@@ -16,11 +16,6 @@ public class Movement : MonoBehaviour
     public bool freeze;
     private void Update()
     {
-        if (transform.position.y < -27)
-        {
-            var scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
-        }
         if (!freeze)
         {
             var x = Input.GetAxis("Horizontal");
