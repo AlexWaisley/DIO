@@ -296,6 +296,28 @@
                 },
                 {
                     "name": "",
+                    "id": "4e3aa761-b1c9-42bd-ac8a-71102773b53c",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "446fdad6-d20d-4575-bae9-1d521123b042",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "38444acf-b99a-4f95-a2a3-d8475444711a",
                     "path": "<Mouse>/scroll/y",
                     "interactions": "",

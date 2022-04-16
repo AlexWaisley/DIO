@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &7868086817535240425
 Camera:
@@ -99,6 +99,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offsetSmoothing: 5
   offset: {x: 0, y: 0, z: 0}
-  maxValue: {x: 108.7, y: 100, z: -10}
-  minValue: {x: -88, y: -5, z: -10}
+  maxValue: {x: 100, y: 100, z: -10}
+  minValue: {x: -100, y: -5, z: -10}
   target: {fileID: 0}
