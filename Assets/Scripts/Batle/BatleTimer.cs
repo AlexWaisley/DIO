@@ -1,13 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using Debug = UnityEngine.Debug;
 
-public class IgTimer : MonoBehaviour
+public class BatleTimer : MonoBehaviour
 {
     [SerializeField] private int totalSeconds;
     [SerializeField] public UnityEvent timeEnds;
@@ -56,11 +54,11 @@ public class IgTimer : MonoBehaviour
         m_Text.color = Color.HSVToRGB( prc/3, 1, 1);
         m_Text.text = sx.ToString("mm':'ss':'ff");
     }
+
     private void Update()
     {
         if (m_Stopped) return;
         UpdateTimer();
         CheckTimer();
-
     }
 }

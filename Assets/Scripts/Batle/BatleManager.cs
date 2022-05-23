@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BatleManager : MonoBehaviour
 {
-   [SerializeField] public IgTimer timer;
+   [SerializeField] public BatleTimer timer;
    [SerializeField] public SlideManager sManager;
    [SerializeField] public int secsToRemoveInc;
 
