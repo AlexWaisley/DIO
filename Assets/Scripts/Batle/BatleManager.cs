@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BatleManager : MonoBehaviour
 {
@@ -12,5 +13,21 @@ public class BatleManager : MonoBehaviour
    private void Start()
    {
       sManager.incorrectClicked.AddListener(() => timer.RemoveSecs(secsToRemoveInc));
+   }
+
+   public void GoToMenu()
+   {
+      Debug.Log("exit"); 
+      SceneManager.LoadScene("Menu");
+   }
+
+   public void GoodEnd()
+   {
+      
+   }
+
+   public void BadEnd()
+   {
+      
    }
 }

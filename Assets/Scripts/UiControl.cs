@@ -22,4 +22,6 @@ public class UiControl : MonoBehaviour
     }
 
     public void HideExitPanel() => pauseChanged.Invoke(false);
-    public void Exit(){ Debug.Log("exit"); SceneManager.LoadScene("Menu"); }}
+    public void Exit(){ Debug.Log("exit"); SceneManager.LoadScene("Menu"); }
+    
+}

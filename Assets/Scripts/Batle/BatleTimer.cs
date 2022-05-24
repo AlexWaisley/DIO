@@ -13,10 +13,17 @@ public class BatleTimer : MonoBehaviour
     private Text m_Text;
     private int m_RemovedSecs;
     private bool m_Stopped;
+
     private void Start()
     {
         ResetTimer();
         m_Text = GetComponentInChildren<Text>();
+        timeEnds.AddListener(OnTimeEnd);
+    }
+
+    private void OnTimeEnd()
+    {
+        
     }
 
     private void ResetTimer()

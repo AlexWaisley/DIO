@@ -64,4 +64,9 @@ public class MainMenu : MonoBehaviour
         panel.SetActive(true);
     }
     public void Exit() => Application.Quit();
+
+    public void StartBattle(int i)
+    {
+        SceneManager.LoadScene($"Lvl_{i}_Virus");
+    }
 }
