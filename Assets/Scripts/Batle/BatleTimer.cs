@@ -18,12 +18,7 @@ public class BatleTimer : MonoBehaviour
     {
         ResetTimer();
         m_Text = GetComponentInChildren<Text>();
-        timeEnds.AddListener(OnTimeEnd);
-    }
-
-    private void OnTimeEnd()
-    {
-        
+        StartCoroutine(UpdateAll());
     }
 
     private void ResetTimer()
@@ -38,6 +33,10 @@ public class BatleTimer : MonoBehaviour
     {
         get
         {
+            if (m_Stopped)
+            {
+                return TimeSpan.Zero;
+            }
             var s = m_StartTime.Subtract(DateTime.Now);
             var ts = TimeSpan.FromSeconds(totalSeconds);
             var tr = TimeSpan.FromSeconds(-m_RemovedSecs);
@@ -62,10 +61,17 @@ public class BatleTimer : MonoBehaviour
         m_Text.text = sx.ToString("mm':'ss':'ff");
     }
 
+    IEnumerator UpdateAll()
+    {
+        while (gameObject.activeSelf)
+        {
+            UpdateTimer();
+            yield return new WaitForEndOfFrame();
+        }
+    }
     private void Update()
     {
-        if (m_Stopped) return;
-        UpdateTimer();
+
         CheckTimer();
     }
 }

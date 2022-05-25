@@ -38,4 +38,10 @@ public class SlideManager : MonoBehaviour
         Debug.Log(SlideIndex);
         SlideIndex++;
     }
+
+    public void HideAll()
+    {
+        foreach (var g in m_Slides) 
+            g.gameObject.SetActive(false);
+    }
 }

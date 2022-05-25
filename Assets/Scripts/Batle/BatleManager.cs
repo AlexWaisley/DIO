@@ -6,28 +6,27 @@ using UnityEngine.SceneManagement;
 
 public class BatleManager : MonoBehaviour
 {
-   [SerializeField] public BatleTimer timer;
-   [SerializeField] public SlideManager sManager;
-   [SerializeField] public int secsToRemoveInc;
+    [SerializeField] public BatleTimer timer;
+    [SerializeField] public SlideManager sManager;
+    [SerializeField] public int secsToRemoveInc;
+    [SerializeField] public GameObject killScreen;
 
-   private void Start()
-   {
-      sManager.incorrectClicked.AddListener(() => timer.RemoveSecs(secsToRemoveInc));
-   }
+    private void Start()
+    {
+        sManager.incorrectClicked.AddListener(() => timer.RemoveSecs(secsToRemoveInc));
+        timer.timeEnds.AddListener(BadEnd);
+        killScreen.SetActive(false);
+    }
 
-   public void GoToMenu()
-   {
-      Debug.Log("exit"); 
-      SceneManager.LoadScene("Menu");
-   }
+    public void GoToMenu()
+    {
+        Debug.Log("exit");
+        SceneManager.LoadScene("Menu");
+    }
 
-   public void GoodEnd()
-   {
-      
-   }
-
-   public void BadEnd()
-   {
-      
-   }
+    private void BadEnd()
+    {
+        killScreen.SetActive(true);
+        sManager.HideAll();
+    }
 }
