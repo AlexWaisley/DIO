@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class SlideManager : MonoBehaviour
 {
     [SerializeField] public UnityEvent incorrectClicked;
+    [SerializeField] public UnityEvent onDone;
     private List<Slide> m_Slides;
     private int SlideIndex
     {
@@ -16,6 +17,10 @@ public class SlideManager : MonoBehaviour
             foreach (var g in m_Slides)
                 g.gameObject.SetActive(false);
             m_Slides[value].gameObject.SetActive(true);
+            if (m_Slides.Last() == m_Slides[value])
+            {
+                onDone.Invoke();
+            }
         }
     }
 

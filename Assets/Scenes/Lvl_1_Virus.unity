@@ -5249,7 +5249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1479542471
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6413,7 +6413,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1819951446
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6770,6 +6770,9 @@ MonoBehaviour:
   incorrectClicked:
     m_PersistentCalls:
       m_Calls: []
+  onDone:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1868530567
 GameObject:
   m_ObjectHideFlags: 0
@@ -7035,7 +7038,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2006416064}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: BatleManager, Assembly-CSharp
         m_MethodName: GoToMenu
         m_Mode: 1
@@ -7269,7 +7272,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2006416063}
-  - component: {fileID: 2006416064}
   - component: {fileID: 2006416065}
   m_Layer: 5
   m_Name: 18
@@ -7301,22 +7303,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2006416064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2006416062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99cf512c697213d4c87b4331c0e901f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timer: {fileID: 0}
-  sManager: {fileID: 0}
-  secsToRemoveInc: 0
-  killScreen: {fileID: 0}
 --- !u!114 &2006416065
 MonoBehaviour:
   m_ObjectHideFlags: 0

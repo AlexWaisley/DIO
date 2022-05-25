@@ -14,6 +14,10 @@ public class BatleManager : MonoBehaviour
     private void Start()
     {
         sManager.incorrectClicked.AddListener(() => timer.RemoveSecs(secsToRemoveInc));
+        sManager.onDone.AddListener(() =>
+        {
+            timer.gameObject.SetActive(false);
+        });
         timer.timeEnds.AddListener(BadEnd);
         killScreen.SetActive(false);
     }
